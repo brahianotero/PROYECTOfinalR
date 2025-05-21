@@ -80,5 +80,69 @@ const Carrito = () => {
           <p>Cargo por domicilio: ${domicilio.toLocaleString()}</p>
         )}
         <p className="font-bold">Total final: ${totalFinal.toLocaleString()}</p>
-         <p>"elimina esto"</p></div>// prueba de subida
       </div>
+
+      <div className="mb-4">
+        <h3 className="font-bold mb-2">Información de tarjeta</h3>
+        <input
+          name="numero"
+          type="text"
+          placeholder="Número"
+          value={tarjeta.numero}
+          onChange={handleInputChange}
+          className="block mb-2 p-2 border w-full"
+        />
+        <input
+          name="expiracion"
+          type="text"
+          placeholder="Expiración"
+          value={tarjeta.expiracion}
+          onChange={handleInputChange}
+          className="block mb-2 p-2 border w-full"
+        />
+        <input
+          name="cvv"
+          type="password"
+          placeholder="CVV"
+          value={tarjeta.cvv}
+          onChange={handleInputChange}
+          className="block mb-2 p-2 border w-full"
+        />
+        <input
+          name="titular"
+          type="text"
+          placeholder="Titular"
+          value={tarjeta.titular}
+          onChange={handleInputChange}
+          className="block mb-2 p-2 border w-full"
+        />
+      </div>
+
+      {error && <p className="text-red-600 mb-2">{error}</p>}
+
+      <div className="flex gap-4">
+        <button
+          onClick={handleConfirmar}
+          className="bg-green-600 text-white px-4 py-2 rounded"
+          disabled={confirmado}
+        >
+          Confirmar compra
+        </button>
+        <button
+          onClick={handleLimpiar}
+          className="bg-red-500 text-white px-4 py-2 rounded"
+        >
+          Limpiar campos
+        </button>
+      </div>
+
+      {confirmado && (
+        <p className="text-green-700 mt-4 font-bold">
+          ¡Compra confirmada exitosamente!
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default Carrito;
